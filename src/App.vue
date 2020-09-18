@@ -1,21 +1,29 @@
 <template>
   <div id="app">
-    <Time />
+    <el-tabs v-model="nowType">
+    <el-tab-pane label="时间转换" name="time"><Time /></el-tab-pane>
+    <el-tab-pane label="Json格式化" name="json"><Json /></el-tab-pane>
+    <el-tab-pane label="正则" name="regex"><Regex /></el-tab-pane>
+  </el-tabs>
   </div>
 </template>
 
 <script>
 import Time from './components/Time.vue';
+import Json from './components/Json.vue';
+import Regex from './components/Regex.vue';
 
 export default {
   name: 'app',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      nowType: 'time',
     };
   },
   components: {
     Time,
+    Json,
+    Regex,
   },
 };
 </script>
