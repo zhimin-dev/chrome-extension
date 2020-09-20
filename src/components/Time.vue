@@ -1,11 +1,11 @@
 <template>
   <div class="time-container">
     <div class="time">
-      <el-input v-model="nowTime" class="now-time" placeholder="当前时间"></el-input>
-      <el-switch v-model="stopTime" active-text="暂停" active-color="#13ce66"></el-switch>
-    </div>
-    <div class="time">
-      <el-input v-model="showTime" class="now-time" placeholder="当前时间"></el-input>
+      <el-input v-model="nowTime" class="now-time now-unix-time" placeholder="当前时间"></el-input>
+      <el-input v-model="showTime" size="mini" class="now-time now-timestamp"
+      placeholder="当前时间"></el-input>
+      <el-switch v-model="stopTime" class="now-time-switch" active-text="暂停"
+      active-color="#13ce66"></el-switch>
     </div>
     <div class="time">
       <el-input size="mini" v-model="year" @change="changeYear" class="per-time"
@@ -38,6 +38,14 @@
     <div class="time">
       <el-input v-model="customTime" class="now-time" placeholder="当前时间"></el-input>
     </div>
+    <div class="time">
+      <div class="g-time">
+        <div class="one-g-time" v-for="(value,index) in timeList" :key="index">
+          <span class="one-g-country" v-text="value.country + ' ' + value.timeZone"></span>
+          <div class="g-timestamp" v-text="value.time"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -54,14 +62,30 @@ export default {
       minute: 0,
       second: 0,
       customTime: '',
+      timeList: [{ country: '美国洛杉矶', timeZone: -15, time: '-:-' },
+        { country: '美国芝加哥', timeZone: -13, time: '-:-' },
+        { country: '美国纽约', timeZone: -12, time: '-:-' },
+        { country: '美国华盛顿', timeZone: -12, time: '-:-' },
+        { country: '伦敦', timeZone: -7, time: '-:-' },
+        { country: '巴黎', timeZone: -6, time: '-:-' },
+        { country: '迪拜', timeZone: -4, time: '-:-' },
+        { country: '东京', timeZone: +1, time: '-:-' },
+      ],
     };
   },
   created() {
     setInterval(() => {
+      const thisTime = new Date().getTime();
       if (!this.stopTime) {
-        const thisTime = new Date().getTime();
-        this.nowTime = Math.round(thisTime / 1000);
-        this.showTime = this.getTimestamp(new Date(thisTime));
+        const genNowTime = thisTime;
+        this.nowTime = Math.round(genNowTime / 1000);
+        this.showTime = this.getTimestamp(new Date(genNowTime));
+      }
+      const zoneTime = thisTime;
+      for (let i = 0; i < this.timeList.length; i += 1) {
+        this.timeList[i].time = this.getMonthDayAndHourMin(
+          new Date(zoneTime + this.timeList[i].timeZone * 3600 * 1000),
+        );
       }
     }, 500);
   },
@@ -70,6 +94,11 @@ export default {
       return `${timestamp.getFullYear()}-${
         timestamp.getMonth() + 1
       }-${timestamp.getDate()} ${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+    },
+    getMonthDayAndHourMin(timestamp) {
+      return `${
+        timestamp.getMonth() + 1
+      }-${timestamp.getDate()} ${timestamp.getHours()}:${timestamp.getMinutes()}`;
     },
     changeYear() {
       if (this.year < 0) {
@@ -132,16 +161,34 @@ export default {
 </script>
 <style lang="sass" scoped>
 .time-container
-  width: 400px
+  width: 600px
   .time
     display: flex
     align-items: center
     padding-bottom: 20px
+    font-size: 14px
+    .g-time
+      display: flex;
+      flex-wrap: wrap;
+      .one-g-country
+        font-size: 12px;
+      .one-g-time
+        max-width: 100px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        .g-timestamp
+          font-size: 16px
+          font-weight: 600;
+    .now-time-switch
+        width: 100px
+    .now-time
+      display: flex
+      flex-wrap: wrap
+      padding-right: 10px
+    .now-timestamp
+      width: 180px
+    .now-unix-time
+      width: 180px
     .per-time
       width: 60px
-      .now-time
-        width: 300px
-        display: flex
-        flex-wrap: wrap
-        padding-right: 10px
 </style>

@@ -1,6 +1,12 @@
 # chrome-extension
 
-> a zhimin chrome extension
+> 一个chrome扩展
+
+## Set up
+
+- You need have a [Chrome browser](https://www.google.com/chrome/)
+- clone this project
+- Open Chrome browser, and select `Settings` - `Extensions` - `Load unpacked`, and choose this project from your local disk
 
 ## Build Setup
 
@@ -15,4 +21,7 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## changelog
+
+- 09-20 add `global time`
+- 09-19 add `time conversion`、`json formater`, `text gegex`
