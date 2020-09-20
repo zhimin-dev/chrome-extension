@@ -1,8 +1,18 @@
 # chrome-extension
 
-> 一个chrome扩展
+> a very useful chrome extension
 
-## Set up
+- it can block some script
+- it has some useful functions you will use it frequently
+- you can add your custom script to some websites
+
+## Add your custom script
+
+1. find `src/script/content/`folder
+2. add a your `www.example.com.js` file, and write your script into it, this script will work in `www.example.com`
+3. `npm run dev` or `npm run build` to generate `content_script.js`file
+
+## Enable this extension
 
 - You need have a [Chrome browser](https://www.google.com/chrome/)
 - clone this project
@@ -23,5 +33,5 @@ npm run build
 
 ## changelog
 
-- 09-20 add `global time`
+- 09-20 add `global time` in `time conversion`、`text decoder`, make `content_script.js` more developed
 - 09-19 add `time conversion`、`json formater`, `text gegex`
