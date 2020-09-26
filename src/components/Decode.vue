@@ -76,7 +76,6 @@ export default {
 </script>
 <style lang="sass" scoped>
 .decode-container
-  width: 400px
   .btn-container
     padding: 10px 0
   .one-btn

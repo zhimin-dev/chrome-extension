@@ -179,8 +179,7 @@ export default {
 
 <style lang="sass" scoped>
 .json-container
-    width: 900px
-    .or-json
-    .show-json
-        padding-top: 20px
+  .or-json
+  .show-json
+      padding-top: 20px
 </style>

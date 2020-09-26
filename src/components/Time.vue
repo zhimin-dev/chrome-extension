@@ -161,7 +161,6 @@ export default {
 </script>
 <style lang="sass" scoped>
 .time-container
-  width: 600px
   .time
     display: flex
     align-items: center
