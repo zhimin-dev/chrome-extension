@@ -1,6 +1,6 @@
 <template>
   <div class="about-conatiner">
-    喜欢请点 <iframe src="https://ghbtns.com/github-btn.html?user=zhimin-dev&repo=chrome-extension&type=star&count=true&size=large&v=2" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+    喜欢请<a @click="goTo">点赞</a>
   </div>
 </template>
 
@@ -8,7 +8,13 @@
 export default {
   data() {
     return {
+      link: 'http://github.com/zhimin-dev/chrome-extension',
     };
+  },
+  methods: {
+    goTo() {
+      window.open(this.link);
+    },
   },
 };
 </script>
