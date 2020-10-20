@@ -5,7 +5,7 @@
       <el-input v-model="showTime" size="mini" class="now-time now-timestamp"
       placeholder="当前时间"></el-input>
       <el-switch v-model="stopTime" class="now-time-switch" active-text="暂停"
-      active-color="#13ce66"></el-switch>
+      active-color="#ff4949"></el-switch>
     </div>
     <div class="time">
       <el-input size="mini" v-model="year" @change="changeYear" class="per-time"

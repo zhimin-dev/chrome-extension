@@ -4,8 +4,8 @@
     <el-tab-pane label="时间转换" name="time"><Time /></el-tab-pane>
     <el-tab-pane label="Json格式化" name="json"><Json /></el-tab-pane>
     <el-tab-pane label="解码" name="decode"><Decode /></el-tab-pane>
-    <el-tab-pane label="正则" name="regex"><Regex /></el-tab-pane>
-    <el-tab-pane label="关于" name="about"><About /></el-tab-pane>
+    <el-tab-pane label="计算" name="cal"><Cal /></el-tab-pane>
+    <el-tab-pane label="其他" name="about"><Other /></el-tab-pane>
   </el-tabs>
   </div>
 </template>
@@ -13,9 +13,9 @@
 <script>
 import Time from './components/Time.vue';
 import Json from './components/Json.vue';
-import Regex from './components/Regex.vue';
 import Decode from './components/Decode.vue';
-import About from './components/About.vue';
+import Other from './components/Other.vue';
+import Cal from './components/Cal.vue';
 
 export default {
   name: 'app',
@@ -27,9 +27,9 @@ export default {
   components: {
     Time,
     Json,
-    Regex,
+    Other,
     Decode,
-    About,
+    Cal,
   },
 };
 </script>
