@@ -6,6 +6,7 @@
     <el-tab-pane label="解码" name="decode"><Decode /></el-tab-pane>
     <el-tab-pane label="计算" name="cal"><Cal /></el-tab-pane>
     <el-tab-pane label="其他" name="about"><Other /></el-tab-pane>
+    <el-tab-pane label="模拟请求" name="sim"><Sim /></el-tab-pane>
   </el-tabs>
   </div>
 </template>
@@ -16,6 +17,7 @@ import Json from './components/Json.vue';
 import Decode from './components/Decode.vue';
 import Other from './components/Other.vue';
 import Cal from './components/Cal.vue';
+import Sim from './components/Sim.vue';
 
 export default {
   name: 'app',
@@ -30,6 +32,7 @@ export default {
     Other,
     Decode,
     Cal,
+    Sim,
   },
 };
 </script>

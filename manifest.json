@@ -15,7 +15,7 @@
 		"storage"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.html"]
   },
   "icons":
 	{
@@ -26,10 +26,11 @@
   "content_scripts": [
 		{
       "matches": ["<all_urls>"],
-			"js": ["content_script.js"],
+			"js": ["js/axios.min.js", "js/content_script.js"],
 			"run_at": "document_start"
 		}
-	],
+  ],
+  "options_page": "options.html",
   "browser_action": {
     "default_icon" : "src/assets/icon.png",
     "default_title": "知敏工具",
