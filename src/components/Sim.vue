@@ -16,6 +16,9 @@
       </el-button>
     </div>
     <div>
+      
+    </div>
+    <div>
       <el-input
         type="textarea"
         :rows="2"
@@ -40,7 +43,17 @@ export default {
     };
   },
   methods: {
-    sendRequest() {
+    doSend() {
+      if (this.request_type === 'Get') {
+        this.sendRequest();
+      } else if (this.request_type === 'Post') {
+        this.sendPostRequest();
+      }
+    },
+    sendPostRequest() {
+
+    },
+    sendGetRequest() {
       this.showHtml = false;
       axios
         .get(this.url)
