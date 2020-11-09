@@ -30,8 +30,30 @@ if(nowHost === '${expUrl[0]}'){
       }
     });
   },
+  moveElementUiCss() {
+    const cssPath = './node_modules/element-ui/lib/theme-chalk/index.css';
+    const desCssPath = './css/index.css';
+    fs.copyFile(cssPath, desCssPath, (err) => {
+      if (err) {
+        console.log(`copyFile ${cssPath} error${err}`);
+      }
+    });
+
+    const fontPath = {
+      './node_modules/element-ui/lib/theme-chalk/fonts/element-icons.woff': './css/fonts/element-icons.woff',
+      './node_modules/element-ui/lib/theme-chalk/fonts/element-icons.ttf': './css/fonts/element-icons.ttf',
+    };
+    for (const i in fontPath) {
+      fs.copyFile(i, fontPath[i], (err) => {
+        if (err) {
+          console.log(`copyFile ${i} error${err}`);
+        }
+      });
+    }
+  },
   generate() {
     this.getAllContentJs();
+    this.moveElementUiCss();
   },
 };
 ContentJs.generate();

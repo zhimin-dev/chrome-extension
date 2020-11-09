@@ -11,12 +11,33 @@
         </el-option>
       </el-select>
       <el-input class="url-c" v-model="url" placeholder="请输入URL"> </el-input>
-      <el-button type="primary" icon="el-icon-search" @click="sendRequest">
+      <el-button type="primary" icon="el-icon-search" @click="doSend">
         发送
       </el-button>
     </div>
     <div>
-      
+      <el-button size="mini" circle @click="addHeader">+</el-button>
+      <el-table
+      :data="headers"
+      style="width: 100%">
+      <el-table-column label="KEY">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.key" placeholder="请输入内容"></el-input>
+        </template>
+      </el-table-column>
+      <el-table-column label="VALUE">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.value" placeholder="请输入内容"></el-input>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button @click="deleteThisHeader(scope.$index)" size="mini" circle>
+            -
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
     </div>
     <div>
       <el-input
@@ -40,12 +61,16 @@ export default {
       request_type_list: ['Get', 'Post'],
       request_type: 'Get',
       showHtml: false,
+      headers: [{ key: 'xxxx', value: 'xzxxx' }, { key: 'xxxx', value: 'xzxxx' }],
     };
   },
   methods: {
+    addHeader() {
+      this.headers.push({ key: '', value: '' });
+    },
     doSend() {
       if (this.request_type === 'Get') {
-        this.sendRequest();
+        this.sendGetRequest();
       } else if (this.request_type === 'Post') {
         this.sendPostRequest();
       }
@@ -53,10 +78,22 @@ export default {
     sendPostRequest() {
 
     },
+    deleteThisHeader(index) {
+      this.headers.splice(index, 1);
+    },
     sendGetRequest() {
+      const headers = {};
+      for (let i = 0; i < this.headers.length; i += 1) {
+        headers[this.headers[i].key] = this.headers[i].value;
+      }
       this.showHtml = false;
       axios
-        .get(this.url)
+        .get({
+          url: this.url,
+          config: {
+            headers,
+          },
+        })
         .then((res) => {
           const contentType = res.headers['content-type'];
           if (contentType.split(';')[0] === 'application/json') {
