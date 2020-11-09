@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app" :class='{"fixedWidth": !isFull, "fullWidth" :isFull }'>
     <el-tabs v-model="nowType">
     <el-tab-pane label="时间转换" name="time"><Time /></el-tab-pane>
-    <el-tab-pane label="Json格式化" name="json"><Json /></el-tab-pane>
+    <el-tab-pane label="Json格式化" name="json"><Json :isFull = "isFull"/></el-tab-pane>
     <el-tab-pane label="解码" name="decode"><Decode /></el-tab-pane>
     <el-tab-pane label="计算" name="cal"><Cal /></el-tab-pane>
     <el-tab-pane label="其他" name="about"><Other /></el-tab-pane>
-    <el-tab-pane label="模拟请求" name="sim"><Sim /></el-tab-pane>
+    <el-tab-pane label="模拟请求" v-if="isFull" name="sim"><Sim /></el-tab-pane>
   </el-tabs>
   </div>
 </template>
@@ -24,7 +24,14 @@ export default {
   data() {
     return {
       nowType: 'time',
+      isFull: true,
     };
+  },
+  created() {
+    const res = sessionStorage.getItem('isOption');
+    if (res === '1') {
+      this.isFull = true;
+    }
   },
   components: {
     Time,
@@ -44,7 +51,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.fixedWidth {
   width: 700px;
+}
+.fullWidth {
+  width: 100%;
 }
 
 h1, h2 {

@@ -15,8 +15,8 @@
         发送
       </el-button>
     </div>
-    <div>
-      <el-button size="mini" circle @click="addHeader">+</el-button>
+    <div style="display: flex;align-items: baseline;flex-direction: row-reverse;">
+      <el-button size="mini" type="primary" circle @click="addHeader">+</el-button>
       <el-table
       :data="headers"
       style="width: 100%">
@@ -40,12 +40,21 @@
     </el-table>
     </div>
     <div>
-      <el-input
-        type="textarea"
-        :rows="2"
-        placeholder="请输入内容"
-        v-model="result"
-      ></el-input>
+      <el-tabs v-model="activeTab">
+        <el-tab-pane label="Body" name="body">
+          <el-input
+            type="textarea"
+            :autosize="true"
+            placeholder="请输入内容"
+            v-model="result"
+          ></el-input>
+      </el-tab-pane>
+        <el-tab-pane label="ResponseHeader" name="header">
+          <div v-for="(v, i) in resultResponseHeader" :key="i">
+            <div v-text="i + ': ' + v"></div>
+          </div>
+          </el-tab-pane>
+      </el-tabs>
     </div>
   </div>
 </template>
@@ -58,10 +67,10 @@ export default {
     return {
       url: '',
       result: '',
-      request_type_list: ['Get', 'Post'],
-      request_type: 'Get',
-      showHtml: false,
-      headers: [{ key: 'xxxx', value: 'xzxxx' }, { key: 'xxxx', value: 'xzxxx' }],
+      request_type_list: ['GET', 'POST', 'HEAD'],
+      request_type: 'GET',
+      headers: [],
+      activeTab: 'body',
     };
   },
   methods: {
@@ -69,37 +78,27 @@ export default {
       this.headers.push({ key: '', value: '' });
     },
     doSend() {
-      if (this.request_type === 'Get') {
-        this.sendGetRequest();
-      } else if (this.request_type === 'Post') {
-        this.sendPostRequest();
-      }
-    },
-    sendPostRequest() {
-
+      this.sendRequest();
     },
     deleteThisHeader(index) {
       this.headers.splice(index, 1);
     },
-    sendGetRequest() {
-      const headers = {};
+    sendRequest() {
+      const headersObj = {};
       for (let i = 0; i < this.headers.length; i += 1) {
-        headers[this.headers[i].key] = this.headers[i].value;
+        headersObj[this.headers[i].key] = this.headers[i].value;
       }
-      this.showHtml = false;
-      axios
-        .get({
-          url: this.url,
-          config: {
-            headers,
-          },
-        })
+      axios({
+        url: this.url,
+        methods: this.request_type,
+        headers: headersObj,
+      })
         .then((res) => {
+          this.resultResponseHeader = res.headers;
           const contentType = res.headers['content-type'];
           if (contentType.split(';')[0] === 'application/json') {
             this.result = JSON.stringify(res.data);
           } else {
-            this.showHtml = true;
             this.result = res.data;
           }
         })

@@ -1,5 +1,5 @@
 <template>
-<div class="json-container">
+<div class="json-container" :class='{"full-width": isFull}'>
     <div class="or-json">
         <el-input
   type="textarea"
@@ -22,6 +22,9 @@
 
 <script>
 export default {
+  props: {
+    isFull: Boolean,
+  },
   data() {
     return {
       orJson: '',
@@ -182,4 +185,15 @@ export default {
   .or-json
   .show-json
       padding-top: 20px
+
+.full-width
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  .or-json
+    width: 48%
+    margin-right: 10px
+  .show-json
+    width: 48%
+    padding-top: 0
 </style>
