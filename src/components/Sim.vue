@@ -90,7 +90,7 @@ export default {
       }
       axios({
         url: this.url,
-        methods: this.request_type,
+        method: this.request_type,
         headers: headersObj,
       })
         .then((res) => {

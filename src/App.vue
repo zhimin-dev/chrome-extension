@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       nowType: 'time',
-      isFull: true,
+      isFull: false,
     };
   },
   created() {

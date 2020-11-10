@@ -17,7 +17,7 @@ setInterval(() => {
               const timeValueS = timeValue.split(' ');
               if (timeValueS.length === 3 && timeValueS[2] === 'PST') {
                 const re = parseTime(timeValue);
-                const stamp = new Date(re.y, re.m, re.d, re.h, re.mi, re.s).getTime() / 1000 + 15 * 3600;
+                const stamp = new Date(re.y, re.m-1, re.d, re.h, re.mi, re.s).getTime() / 1000 + 16 * 3600;
                 j[i].innerText = new Date(stamp * 1000).toLocaleString();
               }
             }
