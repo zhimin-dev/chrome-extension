@@ -15,6 +15,14 @@
         发送
       </el-button>
     </div>
+    <div v-if="request_type === 'POST'">
+      <el-input
+        type="textarea"
+        :autosize="true"
+        placeholder="请输入postData"
+        v-model="postData">
+      </el-input>
+    </div>
     <div style="display: flex;align-items: baseline;flex-direction: row-reverse;">
       <el-button size="mini" type="primary" circle @click="addHeader">+</el-button>
       <el-table
@@ -71,6 +79,7 @@ export default {
       request_type: 'GET',
       headers: [],
       activeTab: 'body',
+      postData: '',
     };
   },
   methods: {
@@ -90,6 +99,7 @@ export default {
       }
       axios({
         url: this.url,
+        data: this.postData,
         method: this.request_type,
         headers: headersObj,
       })
