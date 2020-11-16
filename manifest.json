@@ -15,7 +15,7 @@
 		"storage"
   ],
   "background": {
-    "scripts": ["background.html"]
+    "page": "background.html"
   },
   "icons":
 	{
