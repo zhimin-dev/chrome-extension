@@ -33,6 +33,11 @@ jobs:
         
       - name: build production
         run: npm run build
+        
+      - uses: actions/checkout@v2
+      
+      - name: checkout production
+        uses: zhimin-dev/chrome-extension@production
 
       - name: commit
         run: |
