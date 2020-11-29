@@ -36,14 +36,5 @@
     "default_title": "知敏工具",
     "default_popup": "index.html"
   },
-  "homepage_url": "https://github.com/zhimin-dev",
-  "commands": {
-    "open-google": {
-      "description": "Open a tab to zhi min tool",
-      "suggested_key": { "default": "Ctrl+Shift+L" }
-    },
-    "_execute_browser_action": {
-      "suggested_key": { "default": "Ctrl+Shift+K" }
-    }
-  }
+  "homepage_url": "https://github.com/zhimin-dev"
 }
