@@ -33,3 +33,21 @@ jobs:
         
       - name: build production
         run: npm run build
+
+      - name: commit
+        run: |
+          git config --global user.email starzmisgod@gmail.com
+          git config --global user.name meow.zang
+          git add css/*
+          git add dist/*
+          git add js/*
+          git add background.html
+          git add index.html
+          git add manifest.json
+          git add options.html
+          git commit -m "change file"
+		
+      - name: Push changes
+        uses: zhimin-dev/chrome-extension@production
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
