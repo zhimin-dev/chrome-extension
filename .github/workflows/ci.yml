@@ -25,10 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
         
-      # Runs a single command using the runners shell
-      - name: Build Production
-        run: npm install && npm run build
+      - name: install modules
+        run: npm install
+        
+      - name: build production
+        run: npm run build
