@@ -19,9 +19,9 @@
   },
   "icons":
 	{
-		"16": "src/assets/icon.png",
-		"48": "src/assets/icon.png",
-		"128": "src/assets/icon.png"
+		"16": "images/icon.png",
+		"48": "images/icon.png",
+		"128": "images/icon.png"
 	},
   "content_scripts": [
 		{
@@ -32,7 +32,7 @@
   ],
   "options_page": "options.html",
   "browser_action": {
-    "default_icon" : "src/assets/icon.png",
+    "default_icon" : "images/icon.png",
     "default_title": "知敏工具",
     "default_popup": "index.html"
   },

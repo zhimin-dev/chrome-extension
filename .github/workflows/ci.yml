@@ -41,6 +41,7 @@ jobs:
           mkdir result
           mv css/ result/css/
           mv dist/ result/dist/
+          mv images/ result/images/
           mv js/ result/js/
           mv background.html result/
           mv index.html result/
@@ -51,6 +52,7 @@ jobs:
           rm -rf result
           git add css/*
           git add js/*
+          git add images/*
           git add dist/*
           git add *.json
           git add *.html
