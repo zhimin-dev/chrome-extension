@@ -49,7 +49,11 @@ jobs:
           git rm -r --cached .
           mv result/* ../*
           rm -rf result
-          git add ./*
+          git add css/*
+          git add js/*
+          git add dist/*
+          git add *.json
+          git add *.html
           git commit -m "auto build from github workflow"
           git remote set-url origin https://zmisgod:${{secrets.ACCESS_TOKEN}}@github.com/zhimin-dev/chrome-extension.git
           git remote -v
