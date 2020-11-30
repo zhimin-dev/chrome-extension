@@ -33,26 +33,23 @@ jobs:
         
       - name: build production
         run: npm run build
-        
-      - uses: actions/checkout@v2
-      
-      - name: checkout production
-        uses: zhimin-dev/chrome-extension@production
 
       - name: commit
         run: |
           git config --global user.email starzmisgod@gmail.com
           git config --global user.name meow.zang
-          git add css/*
-          git add dist/*
-          git add js/*
-          git add background.html
-          git add index.html
-          git add manifest.json
-          git add options.html
-          git commit -m "change file"
-
-      - name: Push changes
-        uses: zhimin-dev/chrome-extension@production
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          mkdir result
+          mv css/ result/css/
+          mv dist/ result/dist/
+          mv js/ result/js/
+          mv background.html result/
+          mv index.html result/
+          mv manifest.json result/
+          mv options.html result/
+          cd result
+          git add ./*
+          git commit -m "auto build from github workflow"
+          git remote set-url origin https://zmisgod:${{secrets.ACCESS_TOKEN}}@github.com/zhimin-dev/chrome-extension.git
+          git remote -v
+          git checkout -b production
+          git push origin HEAD:production --force
