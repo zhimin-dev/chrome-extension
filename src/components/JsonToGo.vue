@@ -28,6 +28,7 @@ export default {
   },
 };
 </script>
+
 <style lang="css" scoped>
 .json-container {
   display: flex;
