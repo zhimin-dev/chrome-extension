@@ -8,7 +8,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master, production ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -46,7 +46,9 @@ jobs:
           mv index.html result/
           mv manifest.json result/
           mv options.html result/
-          cd result
+          git rm -r --cached .
+          mv result/* ../*
+          rm -rf result
           git add ./*
           git commit -m "auto build from github workflow"
           git remote set-url origin https://zmisgod:${{secrets.ACCESS_TOKEN}}@github.com/zhimin-dev/chrome-extension.git
