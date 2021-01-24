@@ -1,23 +1,23 @@
 <template>
-<div class="json-container" :class='{"full-width": isFull}'>
+  <div class="json-container" :class='{"full-width": isFull}'>
     <div class="or-json">
-        <el-input
-  type="textarea"
-  placeholder="请输入json"
-  @change="inputJson"
-  v-model="orJson"
-  :autosize="true"
-></el-input>
+      <el-input
+        type="textarea"
+        placeholder="请输入json"
+        @change="inputJson"
+        v-model="orJson"
+        :autosize="true"
+      ></el-input>
     </div>
     <div class="show-json">
-        <el-input
-  type="textarea"
-  placeholder="显示的json"
-  v-model="showJson"
-  :autosize="true"
-></el-input>
+      <el-input
+        type="textarea"
+        placeholder="显示的json"
+        v-model="showJson"
+        :autosize="true"
+      ></el-input>
     </div>
-</div>
+  </div>
 </template>
 
 <script>

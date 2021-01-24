@@ -1,22 +1,21 @@
 <template>
   <div class="cal-container">
-      <div>
-        <el-input @input="calResult" class="value1" v-model="value1" placeholder="请输入值1">
-        </el-input>
-        <el-select @change="calResult" class="cal-type" v-model="cal_type" placeholder="请选择">
-            <el-option
-            v-for="item in cal_options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-            </el-option>
-        </el-select>
-        <el-input @input="calResult" class="value2" v-model="value2" placeholder="请输入值2">
-        </el-input>
-      </div>
-      <div>
-        <el-input class="result" v-model="result" placeholder="请输入值2"></el-input>
-      </div>
+    <div>
+      <el-input @input="calResult" class="value1" v-model="value1" placeholder="请输入值1">
+      </el-input>
+      <el-select @change="calResult" class="cal-type" v-model="cal_type" placeholder="请选择">
+        <el-option
+          v-for="item in cal_options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+      <el-input @input="calResult" class="value2" v-model="value2" placeholder="请输入值2"></el-input>
+    </div>
+    <div>
+      <el-input class="result" v-model="result" placeholder="请输入值2"></el-input>
+    </div>
   </div>
 </template>
 

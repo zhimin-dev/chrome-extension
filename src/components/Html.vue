@@ -1,20 +1,19 @@
 <template>
-    <div class="full-width">
-        <div class="or-json">
-<el-input
-  type="textarea"
-  placeholder="请输入html"
-  v-model="showHtml"
-  :autosize="true"
-></el-input>
+  <div class="full-width">
+    <div class="or-json">
+      <el-input
+        type="textarea"
+        placeholder="请输入html"
+        v-model="showHtml"
+        :autosize="true"
+      ></el-input>
     </div>
-    <div  class="show-json" v-html="showHtml"></div>
-    </div>
+    <div class="show-json" v-html="showHtml"></div>
+  </div>
 </template>
 <script>
 export default {
-  props: {
-  },
+  props: {},
   data() {
     return {
       showHtml: '',

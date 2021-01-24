@@ -74,6 +74,7 @@ export default {
     };
   },
   created() {
+    this.year = new Date().getFullYear();
     setInterval(() => {
       const thisTime = new Date().getTime();
       if (!this.stopTime) {
