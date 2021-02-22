@@ -63,6 +63,8 @@ jobs:
           git remote -v
           git checkout -b production
           git push origin HEAD:production --force
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      
+      - name: publish npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
