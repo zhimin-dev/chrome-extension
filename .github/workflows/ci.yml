@@ -27,6 +27,8 @@ jobs:
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
+        with:
+          registry-url: https://registry.npmjs.org/
         
       - name: install modules
         run: npm install
