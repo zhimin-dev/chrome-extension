@@ -1,7 +1,7 @@
 <template>
   <div class="json-container">
     <div class="json-text">
-      <el-input type="textarea" rows=8 placeholder="请输入json"@change="inputJson" v-model="jsonText">
+      <el-input type="textarea" rows=8 placeholder="请输入json" @change="inputJson" v-model="jsonText">
       </el-input>
     </div>
     <div class="show-go">

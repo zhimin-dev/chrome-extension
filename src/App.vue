@@ -5,6 +5,7 @@
     <el-tab-pane label="Json格式化" name="json"><Json :isFull = "isFull"/></el-tab-pane>
     <el-tab-pane label="解码" name="decode"><Decode /></el-tab-pane>
     <el-tab-pane label="计算" name="cal"><Cal /></el-tab-pane>
+    <el-tab-pane label="链接" name="link"><Link /></el-tab-pane>
     <el-tab-pane label="其他" name="about"><Other /></el-tab-pane>
     <el-tab-pane label="模拟请求" v-if="isFull" name="sim"><Sim /></el-tab-pane>
     <el-tab-pane label="JsonToGo" name="jsonToGo"><JsonToGo /></el-tab-pane>
@@ -22,6 +23,7 @@ import Cal from './components/Cal.vue';
 import Sim from './components/Sim.vue';
 import JsonToGo from './components/JsonToGo.vue';
 import HtmlShow from './components/Html.vue';
+import Link from './components/Link.vue';
 
 export default {
   name: 'app',
@@ -46,6 +48,7 @@ export default {
     Sim,
     JsonToGo,
     HtmlShow,
+    Link,
   },
 };
 </script>

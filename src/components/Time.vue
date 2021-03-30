@@ -62,10 +62,7 @@ export default {
       minute: 0,
       second: 0,
       customTime: '',
-      timeList: [{ country: '美国洛杉矶', timeZone: -15, time: '-:-' },
-        { country: '美国芝加哥', timeZone: -13, time: '-:-' },
-        { country: '美国纽约', timeZone: -12, time: '-:-' },
-        { country: '美国华盛顿', timeZone: -12, time: '-:-' },
+      timeList: [
         { country: '伦敦', timeZone: -7, time: '-:-' },
         { country: '巴黎', timeZone: -6, time: '-:-' },
         { country: '迪拜', timeZone: -4, time: '-:-' },
@@ -75,6 +72,8 @@ export default {
   },
   created() {
     this.year = new Date().getFullYear();
+    this.month = new Date().getMonth() + 1;
+    this.day = new Date().getDate();
     setInterval(() => {
       const thisTime = new Date().getTime();
       if (!this.stopTime) {
